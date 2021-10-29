@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Purpose: Install or Uninstall Fish
-# Author: 
+# Author: Vanderson Santos
 # Note : The script must run as a cron-job.
 # Last updated on : 09/2021
 # -----------------------------------------------

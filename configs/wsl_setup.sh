@@ -18,3 +18,7 @@ source ~/.bashrc
 
 echo "\n install mesa utils \n"
 sudo apt install mesa-utils
+
+echo "\n install uncrustify \n"
+sudo apt-get update
+sudo apt-get install uncrustify -y

@@ -29,7 +29,19 @@ echo "> Install Docker"
 sudo chmod +x ./install_uninstall/docker.sh
 ./install_uninstall/docker.sh -i
 
+# Install Docker Compose
+echo "> Install Docker Compose"
+sudo chmod +x ./install_uninstall/docker_compose.sh
+./install_uninstall/docker_compose.sh -i
+
+# Install node setup
+echo "> Install Node Setup"
+sudo chmod +x ./install_uninstall/node_setup.sh
+./install_uninstall/node_setup.sh
+
+
 # Install Ros
-echo "> Install Ros"
+echo "> Install Ros Noetic"
 sudo chmod +x ./install_uninstall/ros.sh
 ./install_uninstall/ros.sh -i
+

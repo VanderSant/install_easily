@@ -6,44 +6,42 @@
 # -----------------------------------------------
 
 echo Hello, I am will install or uninstall docker!
-read -p 'What do you want? install(i) uninstall(u) ' mode
+while getopts ":iu" opt; do
+  case $opt in
+    i)
+      mode="i"
+      echo "Install"
+      ;;
+    u)
+      mode="u"
+      echo "Uninstall"
+      ;;
+    ?)
+      echo "command = $opt"  
+      echo "script usage: $(basename \$0) [-i] [-u] [-a somevalue]" >&2
+      read -p 'What do you want? install(i) uninstall(u) ' mode
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
 
 if test "$mode" = "i"
 then
-    # Uninstall old versions
     sudo apt-get remove docker docker-engine docker.io containerd runc
-
-    # Installation methods
-    sudo apt-get update
-    sudo apt-get install \
-         ca-certificates \
-         curl \
-         gnupg \
-         lsb-release -Y
     
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    echo \
-        "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-    # Install Docker Engine
     sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg 
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt update
+    sudo apt install docker-ce -y
 
-    # Install Docker Compose
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
-    docker-compose --version
+    # Verify docker status 
+    # sudo systemctl status docker
 
-    # Docker post-installation
-    sudo groupadd docker
-    sudo usermod -aG docker $USER
-    newgrp docker
 elif test "$mode" = "u"
 then
-    # Uninstall docker and docker compose
-    sudo snap remove docker
-    sudo rm $(which docker-compose)
+    echo "Uninstall"
 else
     echo "not a valid option"
 fi

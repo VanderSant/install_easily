@@ -1,12 +1,23 @@
-#!/usr/bin/env bash
-# Purpose: Install or Uninstall Fish
-# Author: Vanderson Santos
-# Note : The script must run as a cron-job.
-# Last updated on : 09/2021
-# -----------------------------------------------
+#!/bin/bash
 
-echo Hello, I am will install or uninstall fish!
-read -p 'What do you want? install(i) uninstall(u) ' mode
+while getopts ":iu" opt; do
+  case $opt in
+    i)
+      mode="i"
+      echo "Install"
+      ;;
+    u)
+      mode="u"
+      echo "Uninstall"
+      ;;
+    ?)
+      echo "command = $opt"  
+      echo "script usage: $(basename \$0) [-i] [-u] [-a somevalue]" >&2
+      read -p 'What do you want? install(i) uninstall(u) ' mode
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
 
 if test "$mode" = "i"
 then

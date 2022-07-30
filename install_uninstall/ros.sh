@@ -6,18 +6,29 @@
 # -----------------------------------------------
 
 echo Hello, I am will install or uninstall ros!
-read -p 'What do you want? install(i) uninstall(u) ' mode
+while getopts ":iu" opt; do
+  case $opt in
+    i)
+      mode="i"
+      echo "Install"
+      ;;
+    u)
+      mode="u"
+      echo "Uninstall"
+      ;;
+    ?)
+      echo "command = $opt"  
+      echo "script usage: $(basename \$0) [-i] [-u] [-a somevalue]" >&2
+      read -p 'What do you want? install(i) uninstall(u) ' mode
+      ;;
+  esac
+done
+shift "$(($OPTIND -1))"
 
 if test "$mode" = "i"
 then
     ## Installation methods
     echo "\n install ROS \n"
-
-    echo "\n able repositóries: \n"
-    sudo add-apt-repository restricted
-    sudo add-apt-repository universe
-    sudo add-apt-repository multiverse
-    sudo apt update
 
     echo "\n Setup your sources.list \n"
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -37,7 +48,6 @@ then
     source ~/.zshrc 
 
     echo "\n Dependencies for building packages \n"
-    sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential -y
     rosdep update
 
 elif test "$mode" = "u"

@@ -2,7 +2,8 @@
 
 # Install basic tools
 sudo apt-get install \
-    build-essential \ 
+    build-essential \
+    gcc \ 
     make \
     git \
     ca-certificates \
@@ -14,6 +15,7 @@ sudo apt-get install \
     python3-rosinstall \
     python3-rosinstall-generator \
     python3-wstool \
+    openjdk-11-jre-headless \
     lsb-release -y
     
 # Install snap

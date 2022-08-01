@@ -11,6 +11,9 @@ echo "> Install all basic packages"
 sudo chmod +x ./install_uninstall/basic.sh
 ./install_uninstall/basic.sh
 
+# The most important instalation
+sudo snap install spotify
+
 # Git configuration
 echo "> Git configuration"
 sudo chmod +x ./configs/git.sh
@@ -39,6 +42,8 @@ echo "> Install Node Setup"
 sudo chmod +x ./install_uninstall/node_setup.sh
 ./install_uninstall/node_setup.sh
 
+# Install STM setup
+mkdir instalations
 
 # Install Ros
 echo "> Install Ros Noetic"

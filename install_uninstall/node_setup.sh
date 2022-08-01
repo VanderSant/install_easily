@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 echo "export NVM_DIR="$HOME/.nvm""

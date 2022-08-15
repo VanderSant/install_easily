@@ -2,6 +2,9 @@
 
 echo "> Lets start!"
 
+# Installations folder
+mkdir instalations
+
 #Update and upgrade before starting
 sudo apt update
 sudo apt upgrade -y
@@ -41,9 +44,6 @@ sudo chmod +x ./install_uninstall/docker_compose.sh
 echo "> Install Node Setup"
 sudo chmod +x ./install_uninstall/node_setup.sh
 ./install_uninstall/node_setup.sh
-
-# Install STM setup
-mkdir instalations
 
 # Install Ros
 echo "> Install Ros Noetic"

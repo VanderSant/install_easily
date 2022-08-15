@@ -7,7 +7,6 @@ sudo apt-get install \
     make \
     git \
     ca-certificates \
-    curl \
     gnupg \
     python3 \
     python3-pip \
@@ -15,9 +14,14 @@ sudo apt-get install \
     python3-rosinstall \
     python3-rosinstall-generator \
     python3-wstool \
-    openjdk-11-jre-headless \
     lsb-release -y
-    
+
+sudo apt-get update
+sudo apt-get upgrade -y
+
+sudo apt-get install curl
+sudo apt-get install openjdk-11-jre-headless -y
+
 # Install snap
 sudo apt update
 sudo apt install snapd

@@ -6,7 +6,6 @@
 # setuṕ
 ROOT_PATH=$(pwd)
 INSTALATION_PATH=$ROOT_PATH/instalations
-CUBE_PATH=$INSTALATION_PATH/cubemx
 
 # script
 sudo apt purge openjfx

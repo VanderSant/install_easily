@@ -11,6 +11,7 @@ sudo apt-get install \
     python3 \
     python3-pip \
     python3-rosdep \
+    python3-rosdep2 \
     python3-rosinstall \
     python3-rosinstall-generator \
     python3-wstool \

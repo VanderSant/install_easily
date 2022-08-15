@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# EMAIL=vanderson0001@gmail.com
-# SENHA=Sinequanon@153047
-
 # setuṕ
 ROOT_PATH=$(pwd)
 INSTALATION_PATH=$ROOT_PATH/instalations
